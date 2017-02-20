@@ -2,13 +2,14 @@ import peasy.*;
 PeasyCam cam;
 
 Table table;
-
+DataPoint data;
 
 void setup() {
   fullScreen(P3D);
   table = loadTable("TestData.csv", "header");
   lights();
   cam = new PeasyCam(this, 500);
+  
   //cam.setMinimumDistance(50);
   //cam.setMaximumDistance(500);
  
