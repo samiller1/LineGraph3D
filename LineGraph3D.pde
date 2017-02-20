@@ -16,6 +16,8 @@ void setup() {
 
 void draw() {
   background(0);
+
+  //Iterate through all of the data points in our set
   for ( int i = 0; i < table.getRowCount(); i++) {
     TableRow row = table.getRow(i);
 
@@ -29,7 +31,7 @@ void draw() {
     line(xPos, height*7/8,0, xPos, height*1/8,0);
     text(year, xPos, height*7/8 + 5, 0);
     
-
+    //Deal with the final data point
     if (i > 0) {
       TableRow prevRow = table.getRow(i-1);
 
@@ -48,6 +50,5 @@ void draw() {
     translate(xPos, yPos);
     sphere(10);
     popMatrix();
-    //ellipse(xPos, yPos, 10, 10);
   }
 }
