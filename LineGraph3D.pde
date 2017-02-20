@@ -17,25 +17,20 @@ void setup() {
 void draw() {
   background(0);
 
+  drawGUI();
   //Iterate through all of the data points in our set
   for ( int i = 0; i < table.getRowCount(); i++) {
     TableRow row = table.getRow(i);
 
-    int year = row.getInt("Year");
     int number = row.getInt("Number");
 
     int yPos = (height * 7/8) - (int) map(number, 0, 50, 0, height *3/4);
     int xPos = (i+1)*width/(table.getRowCount() + 1);
   
-    stroke(100);
-    line(xPos, height*7/8,0, xPos, height*1/8,0);
-    text(year, xPos, height*7/8 + 5, 0);
     
     //Deal with the final data point
     if (i > 0) {
       TableRow prevRow = table.getRow(i-1);
-
-      int prevYear = prevRow.getInt("Year");
       int prevNumber = prevRow.getInt("Number");
 
       int prevYPos = (height * 7/8) - (int) map(prevNumber, 0, 50, 0, height *3/4);
@@ -51,4 +46,16 @@ void draw() {
     sphere(10);
     popMatrix();
   }
+}
+
+void drawGUI(){
+  stroke(100);
+  for (int i = 0; i < table.getRowCount(); i++){
+    TableRow row = table.getRow(i);
+    int year = row.getInt("Year");
+    int xPos = (i+1)*width/(table.getRowCount() + 1);
+    line(xPos, height*7/8, 0, xPos, height*1/8, 0);
+    text(year, xPos, height*7/8 + 5, 0);
+  }
+
 }
